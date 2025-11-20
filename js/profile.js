@@ -1,12 +1,10 @@
-// Ýngilizce Açýklama: Script to load and display the logged-in user's personal data from sessionStorage 
-// to fulfill Request 2 (showing registered data).
-
+// Ýngilizce Açýklama: Script to load and display the logged-in user's personal data from sessionStorage.
 document.addEventListener('DOMContentLoaded', () => {
     const userInfoDisplay = document.getElementById('userInfoDisplay');
     const loggedInUserJson = sessionStorage.getItem('loggedInUser');
 
     if (!loggedInUserJson) {
-        // Kullanýcý giriþ yapmamýþsa
+        // Kullanýcý giriþ yapmamýþsa, login sayfasýna yönlendir veya mesaj göster
         userInfoDisplay.innerHTML = `
             <div class="alert alert-danger text-center">
                 Bu sayfayý görüntülemek için giriþ yapmalýsýnýz. 
@@ -18,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const user = JSON.parse(loggedInUserJson);
 
-    // ÝSTEK 2: Kayýtlý kullanýcý bilgilerini detaylý olarak gösterme
+    // Kayýtlý kullanýcý bilgilerini detaylý olarak gösterme
     userInfoDisplay.innerHTML = `
         <table class="table table-bordered table-striped">
             <tbody>

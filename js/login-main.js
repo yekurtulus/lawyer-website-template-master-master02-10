@@ -1,6 +1,5 @@
-﻿// İngilizce Açıklama: Core logic for user authentication (Login/Register) using pure JavaScript (No jQuery dependency for core logic).
-// Uses localStorage for persistent user data (mimicking a database) and sessionStorage for session tracking.
-// This version is heavily modified to fix ID mismatch and logic errors in previous attempts.
+﻿// İngilizce Açıklama: Core logic for user authentication. 
+// This version includes extensive debug logging to diagnose form submission failure.
 
 // Kullanıcıları Local Storage'dan alır, yoksa boş bir dizi (array) oluşturur.
 function getUsers() {
@@ -10,131 +9,134 @@ function getUsers() {
 
 // Kullanıcı listesini Local Storage'a kaydeder.
 function saveUsers(users) {
-    localStorage.setItem('users', JSON.stringify(users));
+    try {
+        localStorage.setItem('users', JSON.stringify(users));
+        console.log("DEBUG: LocalStorage'a kaydetme başarılı. users anahtarı oluştu.");
+    } catch (e) {
+        console.error("KRİTİK HATA: Local Storage'a kaydetme başarısız oldu.", e);
+    }
 }
 
 // Genel mesaj gösterme fonksiyonu (Pure JS)
 function showMessage(elementId, text, type) {
     const messageElement = document.getElementById(elementId);
     if (messageElement) {
-        // Eski sınıfları temizle ve yenilerini ekle
         messageElement.className = `mt-3 text-center alert alert-${type}`;
         messageElement.textContent = text;
-        messageElement.style.display = 'block'; // Mesajı görünür yap
+        messageElement.style.display = 'block';
     }
 }
 
 // ----------------------------------------------------------------------------------
-// KAYIT İŞLEMİ (REGISTER.HTML)
+// TÜM MANTIK BURADA BAŞLIYOR (DOMContentLoaded sargısı ile güvenli çalışma)
 // ----------------------------------------------------------------------------------
-const registerForm = document.getElementById('registerForm');
-if (registerForm) {
-    registerForm.addEventListener('submit', function (e) {
-        e.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
 
-        // HTML Düzeltmelerine göre yeni ID'ler
-        const name = document.getElementById('regName').value.trim();
-        const email = document.getElementById('regEmail').value.trim();
-        const password = document.getElementById('regPassword').value;
-        const confirmPassword = document.getElementById('regConfirmPassword').value;
+    // KONSOL DEBUG ADIMI: Formların varlığını kontrol et
+    const registerForm = document.getElementById('registerForm');
+    const loginForm = document.getElementById('loginForm');
 
-        if (password !== confirmPassword) {
-            showMessage('registerMessage', 'Hata: Şifreler eşleşmiyor!', 'danger');
-            return;
-        }
+    console.log("DEBUG KONTROL 1: registerForm elementi bulundu mu?", registerForm ? "EVET, Kayıt Hazır." : "HAYIR");
+    console.log("DEBUG KONTROL 2: loginForm elementi bulundu mu?", loginForm ? "EVET, Giriş Hazır." : "HAYIR");
 
-        if (!name || !email || !password) {
-            showMessage('registerMessage', 'Hata: Lütfen tüm alanları doldurun.', 'danger');
-            return;
-        }
+    // ----------------------------------------------------------------------------------
+    // KAYIT İŞLEMİ (REGISTER.HTML)
+    // ----------------------------------------------------------------------------------
+    if (registerForm) {
+        registerForm.addEventListener('submit', function (e) {
+            e.preventDefault();
 
-        let users = getUsers();
+            // Hata ayıklamayı kolaylaştırmak için tüm mantığı try-catch içine alıyoruz
+            try {
+                const name = document.getElementById('regName').value.trim();
+                const email = document.getElementById('regEmail').value.trim();
+                const password = document.getElementById('regPassword').value;
+                const confirmPassword = document.getElementById('regConfirmPassword').value;
 
-        // E-posta Kontrolü
-        if (users.some(user => user.email === email)) {
-            showMessage('registerMessage', 'Hata: Bu e-posta adresi zaten kayıtlı.', 'danger');
-            return;
-        }
+                // Konsola gönderilen verileri yaz
+                console.log("DEBUG: Kayıt Denemesi:", { name, email, password });
 
-        // Yeni kullanıcı objesi
-        const newUser = {
-            name: name,
-            email: email,
-            password: password,
-            phone: 'Belirtilmemiş',
-            address: 'Belirtilmemiş'
-        };
+                if (password !== confirmPassword) {
+                    showMessage('registerMessage', 'Hata: Şifreler eşleşmiyor!', 'danger');
+                    return;
+                }
 
-        users.push(newUser);
-        saveUsers(users);
+                if (!name || !email || !password) {
+                    showMessage('registerMessage', 'Hata: Lütfen tüm alanları doldurun.', 'danger');
+                    return;
+                }
 
-        // Başarılı Kayıt ve Oturum Açma
-        sessionStorage.setItem('loggedInUser', JSON.stringify(newUser));
+                let users = getUsers();
 
-        showMessage('registerMessage', '✅ Kayıt Başarılı! Ana sayfaya yönlendiriliyorsunuz...', 'success');
+                // E-posta Kontrolü
+                if (users.some(user => user.email === email)) {
+                    showMessage('registerMessage', 'Hata: Bu e-posta adresi zaten kayıtlı.', 'danger');
+                    return;
+                }
 
-        // İSTEK 1: Kayıt olduktan sonra 2 saniye sonra ana sayfaya yönlendirme
-        setTimeout(() => {
-            window.location.href = 'index.html';
-        }, 2000);
-    });
-}
+                const newUser = {
+                    name: name,
+                    email: email,
+                    password: password,
+                    phone: 'Belirtilmemiş',
+                    address: 'Belirtilmemiş'
+                };
 
-// ----------------------------------------------------------------------------------
-// GİRİŞ İŞLEMİ (LOGIN.HTML)
-// ----------------------------------------------------------------------------------
-const loginForm = document.getElementById('loginForm');
-if (loginForm) {
-    loginForm.addEventListener('submit', function (e) {
-        e.preventDefault();
+                users.push(newUser);
+                saveUsers(users); // Veri kaydetme fonksiyonunu çağırdık.
 
-        // HTML Düzeltmelerine göre yeni ID'ler
-        const email = document.getElementById('loginEmail').value.trim();
-        const password = document.getElementById('loginPassword').value;
+                // Oturum açma
+                sessionStorage.setItem('loggedInUser', JSON.stringify(newUser));
 
-        if (!email || !password) {
-            showMessage('loginMessage', 'Hata: Lütfen e-posta ve şifrenizi girin.', 'danger');
-            return;
-        }
+                showMessage('registerMessage', '✅ Kayıt Başarılı! Ana sayfaya yönlendiriliyorsunuz...', 'success');
 
-        const users = getUsers();
+                // Yönlendirme (2 saniye bekleme)
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
 
-        // İSTEK 3: Tüm kayıtlı kullanıcılarla giriş yapabilme kontrolü
-        const foundUser = users.find(user => user.email === email && user.password === password);
+            } catch (error) {
+                // Eğer kod çalışırken beklenmedik bir hata olursa yakala
+                showMessage('registerMessage', `KRİTİK HATA: İşlem başarısız. Konsolu kontrol edin.`, 'danger');
+                console.error("KRİTİK HATA: Kayıt işlemi (Register Logic) çalışırken bir hata oluştu.", error);
+            }
+        });
+    }
 
-        if (foundUser) {
-            // Başarılı Giriş
-            sessionStorage.setItem('loggedInUser', JSON.stringify(foundUser));
+    // ----------------------------------------------------------------------------------
+    // GİRİŞ İŞLEMİ (LOGIN.HTML)
+    // ----------------------------------------------------------------------------------
+    if (loginForm) {
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault();
 
-            // İSTEK 4: Giriş Başarılı mesajı ve yönlendirme
-            showMessage('loginMessage', '✅ Giriş Başarılı! Yönlendiriliyorsunuz...', 'success');
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
 
-            setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 2000);
-        } else {
-            // Başarısız Giriş
-            showMessage('loginMessage', '❌ Hata: Hatalı E-posta veya Şifre.', 'danger');
-        }
-    });
-}
+            if (!email || !password) {
+                showMessage('loginMessage', 'Hata: Lütfen e-posta ve şifrenizi girin.', 'danger');
+                return;
+            }
 
-// ----------------------------------------------------------------------------------
-// ŞİFREMİ UNUTTUM İŞLEMİ (FORGOT-PASSWORD.HTML)
-// Not: Bu sayfanın ID'leri de yukarıdaki gibi kontrol edilmelidir.
-// ----------------------------------------------------------------------------------
-const forgotPasswordForm = document.getElementById('forgotPasswordForm');
-if (forgotPasswordForm) {
-    forgotPasswordForm.addEventListener('submit', function (e) {
-        e.preventDefault();
+            const users = getUsers();
+            const foundUser = users.find(user => user.email === email && user.password === password);
 
-        const email = document.getElementById('emailInput').value.trim();
-        const users = getUsers();
+            console.log("DEBUG: Giriş Denemesi:", email, "Bulundu mu?", foundUser ? "EVET" : "HAYIR");
 
-        if (users.some(user => user.email === email)) {
-            showMessage('messageArea', `Şifre sıfırlama talimatları ${email} adresine gönderildi (Simülasyon).`, 'success');
-        } else {
-            showMessage('messageArea', 'Hata: Bu e-posta adresi sistemde kayıtlı değil.', 'danger');
-        }
-    });
-}
+            if (foundUser) {
+                // Başarılı Giriş
+                sessionStorage.setItem('loggedInUser', JSON.stringify(foundUser));
+                showMessage('loginMessage', '✅ Giriş Başarılı! Yönlendiriliyorsunuz...', 'success');
+
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+            } else {
+                // Başarısız Giriş
+                showMessage('loginMessage', '❌ Hata: Hatalı E-posta veya Şifre.', 'danger');
+            }
+        });
+    }
+
+    // ... (Diğer formlar buraya eklenebilir)
+});

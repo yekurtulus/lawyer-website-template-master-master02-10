@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <title>ADALET BÜROSU - Kiþisel Bilgilerim</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Müvekkil Kiþisel Bilgileri ve Profil Yönetimi" name="description">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f8f9fa;
+        }
+
+        .table-bordered th, .table-bordered td {
+            border: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h1 class="display-4 text-primary mb-4">Kiþisel Bilgilerim</h1>
+                <p class="text-secondary mb-4">Hesabýnýza kayýtlý olan bilgilere aþaðýdan ulaþabilirsiniz.</p>
+
+                <div id="userInfoDisplay">
+                    <div class="alert alert-info text-center">Bilgileriniz yükleniyor...</div>
+                </div>
+
+                <button onclick="logout()" class="btn btn-danger mt-4 mr-2"><i class="fa fa-sign-out-alt"></i> Çýkýþ Yap</button>
+                <a href="index.html" class="btn btn-secondary mt-4"><i class="fa fa-arrow-left"></i> Ana Sayfaya Dön</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/profile.js"></script>
+
+    <script>
+        function logout() {
+            sessionStorage.removeItem('loggedInUser');
+            // Kullanýcýnýn Local Storage'daki verisini koruyoruz, sadece oturumu kapatýyoruz.
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

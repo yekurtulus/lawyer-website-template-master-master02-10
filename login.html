@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <title>ADALET BÜROSU - M�vekkil Giri�i</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="M�vekkil Girişi ve Kayıt Sayfası" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <!-- Anasayfa ile ayn� CSS kullan�ld� -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* Sadece login sayfas� i�in �zel stil: Ekran� kaplamas� ve ortalanmas� */
+        body {
+            background-color: #f8f9fa; /* A��k gri arkaplan */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .login-container {
+            max-width: 450px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+
+        .form-group input {
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 login-container">
+                <div class="text-center mb-4">
+                    <h1 class="display-4 text-primary text-uppercase mb-2">ADALET</h1>
+                    <h4 class="text-secondary">M�vekkil Giri� Paneli</h4>
+                </div>
+
+                <!-- Giri� Formu (Bu k�s�m haftaya derste i�levsel hale getirilecek) -->
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="emailInput">E-posta Adresi</label>
+                        <input type="email" class="form-control p-4" id="emailInput" placeholder="E-posta adresinizi girin" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passwordInput">Şifre</label>
+                        <input type="password" class="form-control p-4" id="passwordInput" placeholder="Şifrenizi girin" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block py-3 mt-4">Giri� Yap</button>
+
+                    <div class="mt-3 text-center">
+                        <a href="forgot-password.html" class="text-muted small mr-3">Şifremi Unuttum</a>
+                        <a href="register.html" class="text-primary small">Yeni Kayıt Ol</a>
+                    </div>
+                </form>
+
+                <!-- Ba�ar�/Hata mesajlar� i�in basit bir alan -->
+                <div id="messageArea" class="mt-3 text-center d-none alert alert-info">
+                    <!-- JavaScript ile mesajlar buraya yaz�lacak. -->
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="index.html" class="text-secondary small"><i class="fa fa-arrow-left mr-1"></i> Anasayfaya Geri D�n</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries (Gerekti�inde kullan�lacak) -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bu k�s�m i�in gerekli olacak bo� bir JS dosyas�n� da hemen haz�rl�yorum. -->
+    <script src="js/login-main.js"></script>
+
+</body>
+
+</html>

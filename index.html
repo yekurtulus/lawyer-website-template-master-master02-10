@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <title>ADALET BÜROSU - Online Randevu Sistemi</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Hukuk Bürosu, Online Randevu, Avukat Danışmanlık" name="keywords">
+    <meta content="Hukuki danışmanlık ve online randevu platformu." name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts (Türkçe karakterleri desteklemesi için Montserat ve Roboto kullanıldı) -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header Start (Başlık ve İletişim Bilgileri) -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 bg-secondary d-none d-lg-block">
+                <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                    <h1 class="m-0 display-4 text-primary text-uppercase">ADALET</h1>
+                </a>
+            </div>
+            <div class="col-lg-9">
+                <div class="row bg-white border-bottom d-none d-lg-flex">
+                    <div class="col-lg-7 text-left">
+                        <div class="h-100 d-inline-flex align-items-center py-2 px-3">
+                            <i class="fa fa-envelope text-primary mr-2"></i>
+                            <small>info@adaletburosu.com.tr</small>
+                        </div>
+                        <div class="h-100 d-inline-flex align-items-center py-2 px-2">
+                            <i class="fa fa-phone-alt text-primary mr-2"></i>
+                            <small>+90 555 123 45 67</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 text-right">
+                        <div class="d-inline-flex align-items-center p-2">
+                            <!-- Sosyal Medya İkonları -->
+                            <a class="btn btn-sm btn-outline-primary btn-sm-square mr-2" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-sm btn-outline-primary btn-sm-square mr-2" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-sm btn-outline-primary btn-sm-square mr-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-sm btn-outline-primary btn-sm-square mr-2" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <nav class="navbar navbar-expand-lg bg-white navbar-light p-0">
+                    <a href="index.html" class="navbar-brand d-block d-lg-none">
+                        <h1 class="m-0 display-4 text-primary text-uppercase">ADALET</h1>
+                    </a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto py-0">
+                            <a href="index.html" class="nav-item nav-link active">ANASAYFA</a>
+                            <a href="about.html" class="nav-item nav-link">HAKKIMIZDA</a>
+                            <a href="service.html" class="nav-item nav-link">UZMANLIK ALANLARI</a>
+                            <a href="team.html" class="nav-item nav-link">AVUKATLARIMIZ</a>
+                            <a href="contact.html" class="nav-item nav-link">İLETİŞİM</a>
+                        </div>
+                        <!-- ÖDEV İÇİN GEREKLİ OLAN "MÜVEKKİL GİRİŞİ" BUTONU BURAYA EKLENDİ (SAĞ ÜST KÖŞE) -->
+                        <div id="user-action-container" class="d-none d-lg-block">
+                            <a href="login.html" class="btn btn-secondary mr-3">MÜVEKKİL GİRİŞİ</a>
+                        </div>
+                        <a href="#appointment" class="btn btn-primary mr-3 d-none d-lg-block">HEMEN RANDEVU ALIN</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+    <!-- Carousel Start (Ana Görsel ve Slogan) -->
+    <div class="container-fluid p-0 mb-5 pb-5">
+        <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item position-relative active" style="height: 100vh; min-height: 400px;">
+                    <!-- BURADAKİ RESİM DEĞİŞTİRİLMELİDİR (img/carousel-1.jpg) -->
+                    <img class="position-absolute w-100 h-100" src="img/carousel-1.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/003366/ffffff?text=Hukuk+B%C3%BCrosu';" style="object-fit: cover;">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">GÜVENİLİR HUKUKİ ÇÖZÜMLER</h4>
+                            <h3 class="display-2 text-capitalize text-white mb-4">Adalet İçin Mücadelemiz Başarılarınız İçindir</h3>
+                            <a class="btn btn-primary py-3 px-5 mt-2" href="#appointment">RANDEVU OLUŞTURUN</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item position-relative" style="height: 100vh; min-height: 400px;">
+                    <!-- BURADAKİ RESİM DEĞİŞTİRİLMELİDİR (img/carousel-2.jpg) -->
+                    <img class="position-absolute w-100 h-100" src="img/carousel-2.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/1A5276/ffffff?text=Randevu+Sistemi';" style="object-fit: cover;">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">İHTİYACINIZ OLAN SONUÇLAR</h4>
+                            <h3 class="display-2 text-capitalize text-white mb-4">Size Özel Savunmaya Hazırız</h3>
+                            <a class="btn btn-primary py-3 px-5 mt-2" href="tel:+905551234567">ŞİMDİ BİZİ ARAYIN</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+                <div class="btn btn-lg btn-secondary btn-lg-square">
+                    <span class="carousel-control-prev-icon"></span>
+                </div>
+            </a>
+            <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+                <div class="btn btn-lg btn-secondary btn-lg-square">
+                    <span class="carousel-control-next-icon"></span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!-- Carousel End -->
+    <!-- About Start (Hakkımızda Bölümü) -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-5">
+                    <!-- BURADAKİ RESİM DEĞİŞTİRİLMELİDİR (img/about.jpg) -->
+                    <img class="img-fluid rounded" src="img/about.jpg" onerror="this.onerror=null;this.src='https://placehold.co/500x700/D4E6F1/003366?text=B%C3%BCro+Hakk%C4%B1nda';" alt="Avukatlık Ofisi Görseli">
+                </div>
+                <div class="col-lg-7 mt-4 mt-lg-0">
+                    <h2 class="position-relative text-center bg-white text-primary rounded p-3 mt-4 mb-4 d-none d-lg-block" style="width: 350px; margin-left: -205px;">25 Yılı Aşkın Tecrübe</h2>
+                    <h6 class="text-uppercase">Bizi Tanıyın</h6>
+                    <h1 class="mb-4">Güvenilir ve Etkili Hukuki Hizmetler Sunuyoruz</h1>
+                    <!-- AŞAĞIDAKİ METİN KENDİ İŞ FİKRİNİZE GÖRE DOLDURULMALIDIR -->
+                    <p>Adalet Hukuk Bürosu olarak, müvekkillerimizin haklarını en üst düzeyde korumayı misyon edindik. Uzman kadromuzla, karşılaştığınız her türlü hukuki zorluğa çözüm odaklı ve şeffaf yaklaşımlar geliştiriyoruz. Randevu sistemimiz sayesinde, uzman avukatlarımızla kolayca görüşme ayarlayabilirsiniz.</p>
+                    <a href="about.html" class="btn btn-primary mt-2">Daha Fazlasını Öğrenin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+    <!-- Services Start (Uzmanlık Alanları) -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-3">
+                    <h6 class="text-uppercase">Uzmanlık Alanımız</h6>
+                    <h1 class="mb-4">Hizmet Alanlarımız</h1>
+                    <p>Hukukun çeşitli dallarında uzmanlaşmış avukat kadromuzla yanınızdayız. Aşağıdaki alanlarda randevu alarak hukuki danışmanlık hizmeti alabilirsiniz.</p>
+                    <a href="service.html" class="btn btn-primary mt-2">Tüm Hizmetler</a>
+                </div>
+                <div class="col-lg-9 pt-5 pt-lg-0">
+                    <div class="bg-primary rounded" style="height: 200px;"></div>
+                    <div class="owl-carousel service-carousel position-relative" style="margin-top: -100px; padding: 0 30px;">
+
+                        <!-- Hizmet 1: CEZA HUKUKU -->
+                        <div class="d-flex flex-column align-items-center text-center bg-white rounded pt-4">
+                            <div class="icon-box bg-secondary text-primary mt-2 mb-4">
+                                <i class="fa fa-2x fa-gavel"></i>
+                            </div>
+                            <h5 class="mb-4 px-4">CEZA HUKUKU</h5>
+                            <p class="m-0">Soruşturma, kovuşturma ve temyiz süreçlerinde müvekkil haklarını koruma ve etkin savunma. Hemen randevu alın.</p>
+                        </div>
+
+                        <!-- Hizmet 2: AİLE HUKUKU -->
+                        <div class="d-flex flex-column align-items-center text-center bg-white rounded pt-4">
+                            <div class="icon-box bg-secondary text-primary mt-2 mb-4">
+                                <i class="fa fa-2x fa-users"></i>
+                            </div>
+                            <h5 class="mb-4 px-4">AİLE HUKUKU</h5>
+                            <p class="m-0">Boşanma, velayet, nafaka ve mal rejimleri konularında profesyonel hukuki danışmanlık ve dava takibi.</p>
+                        </div>
+
+                        <!-- Hizmet 3: TİCARET HUKUKU -->
+                        <div class="d-flex flex-column align-items-center text-center bg-white rounded pt-4">
+                            <div class="icon-box bg-secondary text-primary mt-2 mb-4">
+                                <i class="fa fa-2x fa-hand-holding-usd"></i>
+                            </div>
+                            <h5 class="mb-4 px-4">TİCARET HUKUKU</h5>
+                            <p class="m-0">Şirket kuruluşları, sözleşme hazırlama, ticari davalar ve alacak takibi hizmetleri.</p>
+                        </div>
+
+                        <!-- Hizmet 4: GAYRİMENKUL HUKUKU -->
+                        <div class="d-flex flex-column align-items-center text-center bg-white rounded pt-4">
+                            <div class="icon-box bg-secondary text-primary mt-2 mb-4">
+                                <i class="fa fa-2x fa-landmark"></i>
+                            </div>
+                            <h5 class="mb-4 px-4">GAYRİMENKUL HUKUKU</h5>
+                            <p class="m-0">Tapu, kira uyuşmazlıkları, kamulaştırma ve mülkiyet davalarında çözüm odaklı destek.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Services End -->
+    <!-- Appointment Start (Randevu Formu) -->
+    <div class="container-fluid py-5" id="appointment">
+        <div class="container py-5">
+            <div class="bg-appointment rounded">
+                <div class="row h-100 align-items-center justify-content-center">
+                    <div class="col-lg-6 py-5">
+                        <div class="rounded p-5 my-5" style="background: rgba(55, 55, 63, .7);">
+                            <h1 class="text-center text-white mb-4">Online Randevu Alın</h1>
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" class="form-control border-0 p-4" placeholder="Adınız Soyadınız" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control border-0 p-4" placeholder="E-posta Adresiniz" required="required" />
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <div class="date" id="date" data-target-input="nearest">
+                                                <input type="text" class="form-control border-0 p-4 datetimepicker-input" placeholder="Tarih Seçin" data-target="#date" data-toggle="datetimepicker" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <div class="time" id="time" data-target-input="nearest">
+                                                <input type="text" class="form-control border-0 p-4 datetimepicker-input" placeholder="Saat Seçin" data-target="#time" data-toggle="datetimepicker" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <select class="custom-select border-0 px-4" style="height: 47px;">
+                                        <option selected>Hizmet Alanını Seçin</option>
+                                        <option value="1">Ceza Hukuku Danışmanlığı</option>
+                                        <option value="2">Aile Hukuku (Boşanma)</option>
+                                        <option value="3">Gayrimenkul ve Kira Hukuku</option>
+                                        <option value="4">İcra ve İflas Hukuku</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <button class="btn btn-primary btn-block border-0 py-3" type="submit">Randevuyu Onayla</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Appointment End -->
+    <!-- Features Start (Neden Bizi Seçmelisiniz) -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-6" style="min-height: 500px;">
+                    <div class="position-relative h-100 rounded overflow-hidden">
+                        <!-- BURADAKİ RESİM DEĞİŞTİRİLMELİDİR (img/feature.jpg) -->
+                        <img class="position-absolute w-100 h-100" src="img/feature.jpg" onerror="this.onerror=null;this.src='https://placehold.co/500x700/D4E6F1/003366?text=Avukatlık+Ofisi';" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 pt-5 pb-lg-5">
+                    <div class="feature-text bg-white rounded p-lg-5">
+                        <h6 class="text-uppercase">Neden Biz?</h6>
+                        <h1 class="mb-4">Bizi Tercih Etmelisiniz</h1>
+                        <div class="d-flex mb-4">
+                            <div class="btn-primary btn-lg-square px-3" style="border-radius: 50px;">
+                                <h5 class="text-secondary m-0">01</h5>
+                            </div>
+                            <div class="ml-4">
+                                <h5>Uzman Hukuki Kadro</h5>
+                                <p class="m-0">Hukukun farklı alanlarında derin bilgiye ve tecrübeye sahip avukatlarla çalışıyoruz.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-4">
+                            <div class="btn-primary btn-lg-square px-3" style="border-radius: 50px;">
+                                <h5 class="text-secondary m-0">02</h5>
+                            </div>
+                            <div class="ml-4">
+                                <h5>Şeffaflık & Güven</h5>
+                                <p class="m-0">Müvekkillerimizle açık iletişim ve süreç yönetimine büyük önem veriyoruz.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="btn-primary btn-lg-square px-3" style="border-radius: 50px;">
+                                <h5 class="text-secondary m-0">03</h5>
+                            </div>
+                            <div class="ml-4">
+                                <h5>Hızlı Randevu Sistemi</h5>
+                                <p class="m-0">Online sistemimiz sayesinde beklemeden, kolayca randevunuzu oluşturabilirsiniz.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Features End -->
+    <!-- Action Start (Arama Çağrısı) -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="bg-action rounded" style="height: 500px;">
+                <div class="row h-100 align-items-center justify-content-center">
+                    <div class="col-lg-7 text-center">
+                        <h1 class="text-white mb-4">Hemen Başlayın. Ücretsiz Ön Görüşme İçin Bizi Arayın</h1>
+                        <a class="btn btn-primary py-3 px-5 mt-2" href="tel:+905551234567">HEMEN ARA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Action End -->
+    <!-- Team Start (Avukatlar) -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="text-center pb-2">
+                <h6 class="text-uppercase">Hukuk Kadromuz</h6>
+                <h1 class="mb-4">Avukatlarımızla Tanışın</h1>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="bg-primary rounded" style="height: 200px;"></div>
+                    <div class="owl-carousel team-carousel position-relative" style="margin-top: -97px; padding: 0 30px;">
+
+                        <!-- AVUKAT 1 -->
+                        <div class="team-item text-center bg-white rounded overflow-hidden pt-4">
+                            <h5 class="mb-2 px-4">Av. Ahmet Yılmaz</h5>
+                            <p class="mb-3 px-4">Ceza Hukuku Uzmanı</p>
+                            <div class="team-img position-relative">
+                                <!-- BURADAKİ RESİM DEĞİŞTİRİLMELİDİR (img/team-1.jpg) -->
+                                <img class="img-fluid" src="img/team-1.jpg" onerror="this.onerror=null;this.src='https://placehold.co/300x400/D4E6F1/003366?text=Avukat+1';" alt="">
+                                <div class="team-social">
+                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AVUKAT 2 -->
+                        <div class="team-item text-center bg-white rounded overflow-hidden pt-4">
+                            <h5 class="mb-2 px-4">Av. Elif Kaya</h5>
+                            <p class="mb-3 px-4">Aile Hukuku</p>
+                            <div class="team-img position-relative">
+                                <!-- BURADAKİ RESİM DEĞİŞTİRİLMELİDİR (img/team-2.jpg) -->
+                                <img class="img-fluid" src="img/team-2.jpg" onerror="this.onerror=null;this.src='https://placehold.co/300x400/D4E6F1/003366?text=Avukat+2';" alt="">
+                                <div class="team-social">
+                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AVUKAT 3 -->
+                        <div class="team-item text-center bg-white rounded overflow-hidden pt-4">
+                            <h5 class="mb-2 px-4">Av. Mehmet Öztürk</h5>
+                            <p class="mb-3 px-4">Ticaret Hukuku</p>
+                            <div class="team-img position-relative">
+                                <!-- BURADAKİ RESİM DEĞİŞTİRİLMELİDİR (img/team-3.jpg) -->
+                                <img class="img-fluid" src="img/team-3.jpg" onerror="this.onerror=null;this.src='https://placehold.co/300x400/D4E6F1/003366?text=Avukat+3';" alt="">
+                                <div class="team-social">
+                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AVUKAT 4 -->
+                        <div class="team-item text-center bg-white rounded overflow-hidden pt-4">
+                            <h5 class="mb-2 px-4">Av. Zeynep Demir</h5>
+                            <p class="mb-3 px-4">Gayrimenkul Hukuku</p>
+                            <div class="team-img position-relative">
+                                <!-- BURADAKİ RESİM DEĞİŞTİRİLMELİDİR (img/team-4.jpg) -->
+                                <img class="img-fluid" src="img/team-4.jpg" onerror="this.onerror=null;this.src='https://placehold.co/300x400/D4E6F1/003366?text=Avukat+4';" alt="">
+                                <div class="team-social">
+                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bu kısım, şablonun orijinalinde 5 avukat olduğu için korundu -->
+                        <div class="team-item text-center bg-white rounded overflow-hidden pt-4">
+                            <h5 class="mb-2 px-4">Hukuk Danışmanı</h5>
+                            <p class="mb-3 px-4">İcra ve İflas Hukuku</p>
+                            <div class="team-img position-relative">
+                                <!-- BURADAKİ RESİM DEĞİŞTİRİLMELİDİR (img/team-5.jpg) -->
+                                <img class="img-fluid" src="img/team-5.jpg" onerror="this.onerror=null;this.src='https://placehold.co/300x400/D4E6F1/003366?text=Avukat+5';" alt="">
+                                <div class="team-social">
+                                    <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+    <!-- Testimonial Start (Müşteri Yorumları) -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="text-center pb-5">
+                <h6 class="text-uppercase">Müvekkil Yorumları</h6>
+                <h1 class="mb-5">Müvekkillerimiz Ne Diyor?</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel">
+                <div class="testimonial-item">
+                    <div class="testimonial-text position-relative bg-secondary text-light rounded p-5 mb-4">
+                        Hukuki sürecimi başından sonuna kadar şeffaf ve profesyonel yönettiler. Kesinlikle tavsiye ederim.
+                    </div>
+                    <div class="d-flex align-items-center pt-3">
+                        <img class="img-fluid rounded-circle" src="img/testimonial-1.jpg" onerror="this.onerror=null;this.src='https://placehold.co/80x80/D4E6F1/003366?text=M1';" style="width: 80px; height: 80px;" alt="">
+                        <div class="pl-4">
+                            <h5>Ayşe K.</h5>
+                            <p class="m-0">Gayrimenkul Müvekkili</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-text position-relative bg-secondary text-light rounded p-5 mb-4">
+                        Randevu sistemi çok hızlı ve kolay. Acil danışmanlık ihtiyacımda anında çözüme ulaştım.
+                    </div>
+                    <div class="d-flex align-items-center pt-3">
+                        <img class="img-fluid rounded-circle" src="img/testimonial-2.jpg" onerror="this.onerror=null;this.src='https://placehold.co/80x80/D4E6F1/003366?text=M2';" style="width: 80px; height: 80px;" alt="">
+                        <div class="pl-4">
+                            <h5>Burak T.</h5>
+                            <p class="m-0">Ticari Danışan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-text position-relative bg-secondary text-light rounded p-5 mb-4">
+                        Dava sürecinde her adımda bilgilendirildim. Güvenilir ve sonuç odaklı bir hizmet aldım.
+                    </div>
+                    <div class="d-flex align-items-center pt-3">
+                        <img class="img-fluid rounded-circle" src="img/testimonial-3.jpg" onerror="this.onerror=null;this.src='https://placehold.co/80x80/D4E6F1/003366?text=M3';" style="width: 80px; height: 80px;" alt="">
+                        <div class="pl-4">
+                            <h5>Cemre D.</h5>
+                            <p class="m-0">Ceza Hukuku Müvekkili</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-text position-relative bg-secondary text-light rounded p-5 mb-4">
+                        Profesyonel yaklaşımları sayesinde karmaşık hukuki işlemlerim kolayca çözüldü.
+                    </div>
+                    <div class="d-flex align-items-center pt-3">
+                        <img class="img-fluid rounded-circle" src="img/testimonial-4.jpg" onerror="this.onerror=null;this.src='https://placehold.co/80x80/D4E6F1/003366?text=M4';" style="width: 80px; height: 80px;" alt="">
+                        <div class="pl-4">
+                            <h5>Deniz E.</h5>
+                            <p class="m-0">Aile Hukuku Danışanı</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+    <!-- Footer Start -->
+    <div class="container-fluid bg-secondary text-white pt-5 px-sm-3 px-md-5" style="margin-top: 90px;">
+        <!-- Footer İçeriği Türkçe'ye çevrilmeli ve güncellenmelidir -->
+        <div class="row pt-5">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <a href="index.html" class="navbar-brand">
+                    <h1 class="m-0 mt-n2 display-4 text-primary text-uppercase">ADALET</h1>
+                </a>
+                <p>Müvekkil odaklı hizmet anlayışımızla, hukuki süreçlerinizi şeffaf ve güvenilir bir şekilde yönetiyoruz.</p>
+                <div class="d-flex justify-content-start mt-4">
+                    <!-- Sosyal Medya İkonları -->
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="font-weight-semi-bold text-primary mb-4">Popüler Bağlantılar</h4>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Anasayfa</a>
+                    <a class="text-white mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>Hakkımızda</a>
+                    <a class="text-white mb-2" href="service.html"><i class="fa fa-angle-right mr-2"></i>Hizmetlerimiz</a>
+                    <a class="text-white mb-2" href="team.html"><i class="fa fa-angle-right mr-2"></i>Avukatlarımız</a>
+                    <a class="text-white" href="contact.html"><i class="fa fa-angle-right mr-2"></i>İletişim</a>
+                </div>
+            </div>
+            <!-- Diğer Hızlı Bağlantılar ve Bülten kısmı şablonun orijinalinde olduğu gibi bırakıldı, metinleri değiştirilmeli. -->
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="font-weight-semi-bold text-primary mb-4">Hızlı Bağlantılar</h4>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>SSS</a>
+                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Gizlilik Politikası</a>
+                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Kullanım Şartları</a>
+                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Yardım</a>
+                    <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Site Haritası</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="font-weight-semi-bold text-primary mb-4">Bülten Aboneliği</h4>
+                <p>Yasal gelişmelerden ve duyurulardan haberdar olmak için e-posta bültenimize kayıt olun.</p>
+                <div class="w-100">
+                    <div class="input-group">
+                        <input type="text" class="form-control border-0" style="padding: 25px;" placeholder="E-posta Adresiniz">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary px-4">Kayıt Ol</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row p-4 mt-5 mx-0" style="background: rgba(256, 256, 256, .05);">
+            <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+                <p class="m-0 text-white">&copy; <a class="font-weight-bold" href="#">ADALET Hukuk Bürosu</a>. Tüm Hakları Saklıdır.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+    <!-- JavaScript Libraries ve Script'ler (Orijinal hali korundu) -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

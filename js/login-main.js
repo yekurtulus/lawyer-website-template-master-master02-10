@@ -1,6 +1,6 @@
-﻿// İngilizce Açıklama: Core logic for user authentication (Login/Register) using jQuery and HTML IDs.
-// It uses localStorage for persistent user data (mimicking a database) and sessionStorage for session tracking.
-// This single file handles the interaction for all login and registration related pages.
+﻿// İngilizce Açıklama: Core logic for user authentication (Login/Register) using pure JavaScript (No jQuery dependency for core logic).
+// Uses localStorage for persistent user data (mimicking a database) and sessionStorage for session tracking.
+// This version is heavily modified to fix ID mismatch and logic errors in previous attempts.
 
 // Kullanıcıları Local Storage'dan alır, yoksa boş bir dizi (array) oluşturur.
 function getUsers() {
@@ -13,41 +13,38 @@ function saveUsers(users) {
     localStorage.setItem('users', JSON.stringify(users));
 }
 
-// Genel mesaj gösterme fonksiyonu (jQuery tabanlı)
-function showMessage(selector, text, type) {
-    const $messageArea = $(selector);
-    $messageArea.removeClass('d-none alert-info alert-success alert-danger alert-warning')
-        .addClass(type)
-        .html(text) // Mesajı HTML olarak gösterir.
-        .slideDown();
+// Genel mesaj gösterme fonksiyonu (Pure JS)
+function showMessage(elementId, text, type) {
+    const messageElement = document.getElementById(elementId);
+    if (messageElement) {
+        // Eski sınıfları temizle ve yenilerini ekle
+        messageElement.className = `mt-3 text-center alert alert-${type}`;
+        messageElement.textContent = text;
+        messageElement.style.display = 'block'; // Mesajı görünür yap
+    }
 }
 
-$(document).ready(function () {
-
-    // ----------------------------------------------------------------------------------
-    // KAYIT İŞLEMİ (REGISTER.HTML)
-    // İSTEK 1 (Yönlendirme), İSTEK 3 (Tüm e-postaları kaydetme) çözülür.
-    // ----------------------------------------------------------------------------------
-    $('#registerForm').on('submit', function (e) {
+// ----------------------------------------------------------------------------------
+// KAYIT İŞLEMİ (REGISTER.HTML)
+// ----------------------------------------------------------------------------------
+const registerForm = document.getElementById('registerForm');
+if (registerForm) {
+    registerForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        // Form alanlarının ID'leri register.html'deki ID'lerdir
-        const name = $('#nameInput').val().trim();
-        const email = $('#emailInput').val().trim();
-        const password = $('#passwordInput').val();
-        const confirmPassword = $('#confirmPasswordInput').val();
+        // HTML Düzeltmelerine göre yeni ID'ler
+        const name = document.getElementById('regName').value.trim();
+        const email = document.getElementById('regEmail').value.trim();
+        const password = document.getElementById('regPassword').value;
+        const confirmPassword = document.getElementById('regConfirmPassword').value;
 
-        // Mesaj alanının ID'si register.html'de #messageArea
-        const $messageArea = $('#messageArea');
-
-        // Şifre Eşleşme Kontrolü
         if (password !== confirmPassword) {
-            showMessage('#messageArea', 'Hata: Şifreler eşleşmiyor! Lütfen kontrol edin.', 'alert-danger');
+            showMessage('registerMessage', 'Hata: Şifreler eşleşmiyor!', 'danger');
             return;
         }
 
         if (!name || !email || !password) {
-            showMessage('#messageArea', 'Hata: Lütfen tüm alanları doldurun.', 'alert-danger');
+            showMessage('registerMessage', 'Hata: Lütfen tüm alanları doldurun.', 'danger');
             return;
         }
 
@@ -55,15 +52,15 @@ $(document).ready(function () {
 
         // E-posta Kontrolü
         if (users.some(user => user.email === email)) {
-            showMessage('#messageArea', 'Hata: Bu e-posta adresi zaten kayıtlı.', 'alert-danger');
+            showMessage('registerMessage', 'Hata: Bu e-posta adresi zaten kayıtlı.', 'danger');
             return;
         }
 
-        // Yeni kullanıcı objesi (İSTEK 2 için gerekli alanlar)
+        // Yeni kullanıcı objesi
         const newUser = {
             name: name,
             email: email,
-            password: password, // Gerçek projede hash'lenmeli.
+            password: password,
             phone: 'Belirtilmemiş',
             address: 'Belirtilmemiş'
         };
@@ -74,30 +71,29 @@ $(document).ready(function () {
         // Başarılı Kayıt ve Oturum Açma
         sessionStorage.setItem('loggedInUser', JSON.stringify(newUser));
 
-        showMessage('#messageArea', '✅ Kayıt Başarılı! Ana sayfaya yönlendiriliyorsunuz...', 'alert-success');
+        showMessage('registerMessage', '✅ Kayıt Başarılı! Ana sayfaya yönlendiriliyorsunuz...', 'success');
 
         // İSTEK 1: Kayıt olduktan sonra 2 saniye sonra ana sayfaya yönlendirme
         setTimeout(() => {
             window.location.href = 'index.html';
         }, 2000);
     });
+}
 
-    // ----------------------------------------------------------------------------------
-    // GİRİŞ İŞLEMİ (LOGIN.HTML)
-    // İSTEK 3 (Tüm e-postalarla giriş), İSTEK 4 (Türkçe karakter ve genel giriş başarısı) çözülür.
-    // ----------------------------------------------------------------------------------
-    $('#loginForm').on('submit', function (e) {
+// ----------------------------------------------------------------------------------
+// GİRİŞ İŞLEMİ (LOGIN.HTML)
+// ----------------------------------------------------------------------------------
+const loginForm = document.getElementById('loginForm');
+if (loginForm) {
+    loginForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        // Form alanlarının ID'leri login.html'deki ID'lerdir (emailInput, passwordInput)
-        const email = $('#emailInput').val().trim();
-        const password = $('#passwordInput').val();
-
-        // Mesaj alanının ID'si login.html'de #messageArea
-        const $messageArea = $('#messageArea');
+        // HTML Düzeltmelerine göre yeni ID'ler
+        const email = document.getElementById('loginEmail').value.trim();
+        const password = document.getElementById('loginPassword').value;
 
         if (!email || !password) {
-            showMessage('#messageArea', 'Hata: Lütfen e-posta ve şifrenizi girin.', 'alert-danger');
+            showMessage('loginMessage', 'Hata: Lütfen e-posta ve şifrenizi girin.', 'danger');
             return;
         }
 
@@ -110,33 +106,35 @@ $(document).ready(function () {
             // Başarılı Giriş
             sessionStorage.setItem('loggedInUser', JSON.stringify(foundUser));
 
-            // İSTEK 4: Türkçe karakter hatası düzeltildi ve yönlendirme eklendi
-            showMessage('#messageArea', '✅ Giriş Başarılı! Yönlendiriliyorsunuz...', 'alert-success');
+            // İSTEK 4: Giriş Başarılı mesajı ve yönlendirme
+            showMessage('loginMessage', '✅ Giriş Başarılı! Yönlendiriliyorsunuz...', 'success');
 
-            // 2 saniye sonra ana sayfaya yönlendir
             setTimeout(() => {
                 window.location.href = 'index.html';
             }, 2000);
         } else {
             // Başarısız Giriş
-            showMessage('#messageArea', '❌ Hata: Hatalı E-posta veya Şifre. Lütfen kontrol edin.', 'alert-danger');
+            showMessage('loginMessage', '❌ Hata: Hatalı E-posta veya Şifre.', 'danger');
         }
     });
+}
 
-    // ----------------------------------------------------------------------------------
-    // ŞİFREMİ UNUTTUM İŞLEMİ (FORGOT-PASSWORD.HTML)
-    // ----------------------------------------------------------------------------------
-    $('#forgotPasswordForm').on('submit', function (e) {
+// ----------------------------------------------------------------------------------
+// ŞİFREMİ UNUTTUM İŞLEMİ (FORGOT-PASSWORD.HTML)
+// Not: Bu sayfanın ID'leri de yukarıdaki gibi kontrol edilmelidir.
+// ----------------------------------------------------------------------------------
+const forgotPasswordForm = document.getElementById('forgotPasswordForm');
+if (forgotPasswordForm) {
+    forgotPasswordForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        const email = $('#emailInput').val().trim();
-        const $messageArea = $('#messageArea');
+        const email = document.getElementById('emailInput').value.trim();
         const users = getUsers();
 
         if (users.some(user => user.email === email)) {
-            showMessage('#messageArea', `Şifre sıfırlama talimatları ${email} adresine gönderildi (Simülasyon). Lütfen e-postanızı kontrol edin.`, 'alert-success');
+            showMessage('messageArea', `Şifre sıfırlama talimatları ${email} adresine gönderildi (Simülasyon).`, 'success');
         } else {
-            showMessage('#messageArea', 'Hata: Bu e-posta adresi sistemde kayıtlı değil.', 'alert-danger');
+            showMessage('messageArea', 'Hata: Bu e-posta adresi sistemde kayıtlı değil.', 'danger');
         }
     });
-});
+}

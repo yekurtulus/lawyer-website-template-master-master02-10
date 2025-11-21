@@ -67,24 +67,15 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="index.html" class="nav-item nav-link">ANASAYFA</a>
-                            <a href="about.html" class="nav-item nav-link active">HAKKIMIZDA</a>
-                            <a href="service.html" class="nav-item nav-link">UZMANLIK ALANLARI</a>
+                            <a href="index.html" class="nav-item nav-link active">ANASAYFA</a>
+                            <a href="about.html" class="nav-item nav-link">HAKKIMIZDA</a>
                             <a href="team.html" class="nav-item nav-link">AVUKATLARIMIZ</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Daha Fazla</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="#" class="dropdown-item">Hukuki Makaleler</a>
-                                    <a href="#" class="dropdown-item">Sıkça Sorulanlar</a>
-                                    <a href="#" class="dropdown-item">Kariyer</a>
-                                </div>
-                            </div>
                             <a href="contact.html" class="nav-item nav-link">İLETİŞİM</a>
                         </div>
-                        <!-- MÜVEKKİL GİRİŞİ BUTONU EKLENDİ -->
-                        <a href="login.html" class="btn btn-secondary mr-3 d-none d-lg-block">MÜVEKKİL GİRİŞİ</a>
-                        <a href="index.html#appointment" class="btn btn-primary mr-3 d-none d-lg-block">HEMEN RANDEVU ALIN</a>
-                    </div>
+                        <div id="user-action-container" class="d-none d-lg-flex align-items-center">
+                            <a href="login.html" class="btn btn-secondary mr-3">GİRİŞ YAP</a>
+                        </div>
+                   
                 </nav>
             </div>
         </div>
@@ -117,63 +108,13 @@
                     <h6 class="text-uppercase">Bizi Tanıyın</h6>
                     <h1 class="mb-4">Güvenilir ve Etkili Hukuki Hizmetler Sunuyoruz</h1>
                     <p>ADALET Hukuk Bürosu, kuruluşundan bu yana müvekkillerine dürüstlük, şeffaflık ve sonuç odaklılık ilkeleriyle hizmet vermektedir. Hukukun üstünlüğüne olan inancımızla, her müvekkilimizin sorununa özel, detaylı çözümler üretmeyi amaçlıyoruz. Tecrübeli avukat kadromuz, değişen yasal düzenlemeleri yakından takip ederek, müvekkillerimizi en güncel bilgilerle temsil eder.</p>
-                    <a href="index.html#appointment" class="btn btn-primary mt-2">Hemen Randevu Alın</a>
+                   
                 </div>
             </div>
         </div>
     </div>
     <!-- About End -->
-    <!-- Appointment Start (Randevu Formu) -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="bg-appointment rounded">
-                <div class="row h-100 align-items-center justify-content-center">
-                    <div class="col-lg-6 py-5">
-                        <div class="rounded p-5 my-5" style="background: rgba(55, 55, 63, .7);">
-                            <h1 class="text-center text-white mb-4">Online Randevu Alın</h1>
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" class="form-control border-0 p-4" placeholder="Adınız Soyadınız" required="required" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control border-0 p-4" placeholder="E-posta Adresiniz" required="required" />
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="date" id="date" data-target-input="nearest">
-                                                <input type="text" class="form-control border-0 p-4 datetimepicker-input" placeholder="Tarih Seçin" data-target="#date" data-toggle="datetimepicker" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="time" id="time" data-target-input="nearest">
-                                                <input type="text" class="form-control border-0 p-4 datetimepicker-input" placeholder="Saat Seçin" data-target="#time" data-toggle="datetimepicker" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <select class="custom-select border-0 px-4" style="height: 47px;">
-                                        <option selected>Hizmet Alanını Seçin</option>
-                                        <option value="1">Ceza Hukuku Danışmanlığı</option>
-                                        <option value="2">Aile Hukuku (Boşanma)</option>
-                                        <option value="3">Gayrimenkul ve Kira Hukuku</option>
-                                        <option value="4">İcra ve İflas Hukuku</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <button class="btn btn-primary btn-block border-0 py-3" type="submit">Randevuyu Onayla</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Appointment End -->
+   
     <!-- Features Start (Neden Bizi Seçmelisiniz) -->
     <div class="container-fluid py-5">
         <div class="container py-5">

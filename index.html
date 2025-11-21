@@ -68,15 +68,12 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.html" class="nav-item nav-link active">ANASAYFA</a>
                             <a href="about.html" class="nav-item nav-link">HAKKIMIZDA</a>
-                            <a href="service.html" class="nav-item nav-link">UZMANLIK ALANLARI</a>
                             <a href="team.html" class="nav-item nav-link">AVUKATLARIMIZ</a>
                             <a href="contact.html" class="nav-item nav-link">İLETİŞİM</a>
                         </div>
-                        <!-- ÖDEV İÇİN GEREKLİ OLAN "MÜVEKKİL GİRİŞİ" BUTONU BURAYA EKLENDİ (SAĞ ÜST KÖŞE) -->
-                        <div id="user-action-container" class="d-none d-lg-block">
-                            <a href="login.html" class="btn btn-secondary mr-3">MÜVEKKİL GİRİŞİ</a>
+                        <div id="user-action-container" class="d-none d-lg-flex align-items-center">
+                            <a href="login.html" class="btn btn-secondary mr-3">GİRİŞ YAP</a>
                         </div>
-                        <a href="#appointment" class="btn btn-primary mr-3 d-none d-lg-block">HEMEN RANDEVU ALIN</a>
                     </div>
                 </nav>
             </div>
@@ -198,59 +195,6 @@
             </div>
         </div>
     </div>
-    <!-- Services End -->
-    <!-- Appointment Start (Randevu Formu) -->
-    <div class="container-fluid py-5" id="appointment">
-        <div class="container py-5">
-            <div class="bg-appointment rounded">
-                <div class="row h-100 align-items-center justify-content-center">
-                    <div class="col-lg-6 py-5">
-                        <div class="rounded p-5 my-5" style="background: rgba(55, 55, 63, .7);">
-                            <h1 class="text-center text-white mb-4">Online Randevu Alın</h1>
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" class="form-control border-0 p-4" placeholder="Adınız Soyadınız" required="required" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control border-0 p-4" placeholder="E-posta Adresiniz" required="required" />
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="date" id="date" data-target-input="nearest">
-                                                <input type="text" class="form-control border-0 p-4 datetimepicker-input" placeholder="Tarih Seçin" data-target="#date" data-toggle="datetimepicker" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="time" id="time" data-target-input="nearest">
-                                                <input type="text" class="form-control border-0 p-4 datetimepicker-input" placeholder="Saat Seçin" data-target="#time" data-toggle="datetimepicker" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <select class="custom-select border-0 px-4" style="height: 47px;">
-                                        <option selected>Hizmet Alanını Seçin</option>
-                                        <option value="1">Ceza Hukuku Danışmanlığı</option>
-                                        <option value="2">Aile Hukuku (Boşanma)</option>
-                                        <option value="3">Gayrimenkul ve Kira Hukuku</option>
-                                        <option value="4">İcra ve İflas Hukuku</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <button class="btn btn-primary btn-block border-0 py-3" type="submit">Randevuyu Onayla</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Appointment End -->
-    <!-- Features Start (Neden Bizi Seçmelisiniz) -->
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="row">
@@ -449,6 +393,33 @@
                             <p class="m-0">Aile Hukuku Danışanı</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="attorneyDetailModal" tabindex="-1" role="dialog" aria-labelledby="attorneyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="attorneyModalLabel">Avukat Adı</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Kapat">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="text-secondary mb-3">Hakkında</h4>
+                    <p id="attorneyBio" class="lead"></p>
+                    <p class="font-weight-bold" id="attorneyArea"></p>
+
+                    <hr class="my-4">
+
+                    <h4 class="text-secondary mb-3">Önceki Müvekkil Yorumları</h4>
+                    <div id="attorneyReviews">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    <a href="randevu-al.html" class="btn btn-primary">Randevu Al</a>
                 </div>
             </div>
         </div>
